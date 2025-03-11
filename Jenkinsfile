@@ -11,12 +11,14 @@ pipeline {
         }
 
         stage('Test') {
-            steps {
-                script {
-                    sh './hello_exec'
-                }
-            }
+    steps {
+        script {
+            sh './hello_exec'
+            sh 'exit 1'  // This line forces an error, causing the pipeline to fail
         }
+    }
+}
+
 
         stage('Deploy') {
             steps {
